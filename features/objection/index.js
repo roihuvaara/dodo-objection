@@ -201,6 +201,21 @@ module.exports.tasks = [{
     description: 'Runs populate of the service'
 
 }, {
+    name: 'db-rollback',
+    run: function (featureConfig, serviceConfig, servicePath) {
+        const dbManager = createDbManager(featureConfig);
+        return dbManager.rollbackDb()
+            .tap(res => dbManager.closeKnex())
+            .tap(res => dbManager.close())
+            .catch(err => {
+                    dbManager.closeKnex();
+                dbManager.close();
+                throw err;
+            });
+    },
+    description: 'Rollback latest migration of the service'
+
+}, {
   name: 'db-drop',
   run: function (featureConfig, serviceConfig, servicePath) {
     const dbManager = createDbManager(featureConfig);

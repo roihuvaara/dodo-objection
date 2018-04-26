@@ -11,7 +11,7 @@
   "dependencies": {
     "bluebird": "^3.4.6",
     "cli-color": "^1.1.0",
-    "knex-db-manager": "^0.4.0",
+    "knex-db-manager": "github:roihuvaara/knex-db-manager#f01ea326d4f33bcfa97e6aa4fbbcd43afaa8a569",
     "lodash": "^4.16.2",
     "moment": "^2.19.1"
   },
